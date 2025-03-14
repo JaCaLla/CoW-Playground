@@ -20,12 +20,12 @@ struct CoWExample {
         
         if !isKnownUniquelyReferenced(&storage) {
             print("Making a copy of the data before modifying it.")
-            storage = Wrapper(data: storage.data) // Se crea una copia
+            storage = Wrapper(data: storage.data) // Created a copy
         } else {
             print("Update without copy, unique reference.")
         }
 
-        storage.data.append(4)  // Modificamos el array dentro de la clase
+        storage.data.append(4)  // Modify array from class inside
         print("@ Memory after updaing: \(Unmanaged.passUnretained(storage).toOpaque())")
     }
 
@@ -43,7 +43,7 @@ obj1.printData("obj1:")
 obj2.printData("obj2:")
 
 print("\nUpdating obj2:")
-obj2.modifyData() // Aquí se hará la copia si hay otra referencia
+obj2.modifyData() // Here will take place copy when there's a new reference
 
 print("\nAfter updating obj1:")
 obj1.printData("obj1:")
